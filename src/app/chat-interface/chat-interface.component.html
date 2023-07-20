@@ -1,0 +1,20 @@
+<div class="chat-container">
+  <div class="chatbox">
+    <div class="chat-output" *ngFor="let message of messages">
+      <p class="text-left" *ngIf="message.sender === 'User'">
+        <strong>You:</strong> {{message.text}}
+      </p>
+      <p class="text-right" *ngIf="message.sender === 'Chatbot'">
+        <strong>Bot:</strong> {{message.text}}
+      </p>
+    </div>
+  </div>
+  <form (ngSubmit)="sendMessage()" class="pt-4">
+    <div class="input-group">
+      <input [(ngModel)]="prompt" name="prompt" type="text" class="form-control" placeholder="Type a message">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
